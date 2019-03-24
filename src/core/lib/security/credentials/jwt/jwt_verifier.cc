@@ -619,12 +619,12 @@ static int verify_jwt_signature(EVP_PKEY* key, const char* alg,
     gpr_log(GPR_ERROR, "EVP_DigestVerifyInit failed.");
     goto end;
   }
-  if (EVP_DigestVerifyUpdate(md_ctx, reinterpret_cast<char*>  GRPC_SLICE_START_PTR(signed_data),
+  if (EVP_DigestVerifyUpdate(md_ctx, reinterpret_cast<const char*>  GRPC_SLICE_START_PTR(signed_data),
                              GRPC_SLICE_LENGTH(signed_data)) != 1) {
     gpr_log(GPR_ERROR, "EVP_DigestVerifyUpdate failed.");
     goto end;
   }
-  if (EVP_DigestVerifyFinal(md_ctx, reinterpret_cast<char*>  GRPC_SLICE_START_PTR(signature),
+  if (EVP_DigestVerifyFinal(md_ctx, reinterpret_cast<const char*>  GRPC_SLICE_START_PTR(signature),
                             GRPC_SLICE_LENGTH(signature)) != 1) {
     gpr_log(GPR_ERROR, "JWT signature verification failed.");
     goto end;
