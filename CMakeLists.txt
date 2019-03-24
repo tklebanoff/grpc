@@ -1391,6 +1391,7 @@ if (gRPC_INSTALL)
 endif()
 
 
+#[[
 add_library(grpc_cronet
   src/core/lib/surface/init.cc
   src/core/lib/avl/avl.cc
@@ -1770,6 +1771,7 @@ if (gRPC_INSTALL)
     ARCHIVE DESTINATION ${gRPC_INSTALL_LIBDIR}
   )
 endif()
+#]]
 
 if (gRPC_BUILD_TESTS)
 
@@ -3245,6 +3247,7 @@ endif (gRPC_BUILD_CODEGEN)
 
 endif (gRPC_BUILD_TESTS)
 
+#[[
 add_library(grpc++_cronet
   src/cpp/client/cronet_credentials.cc
   src/cpp/client/insecure_credentials.cc
@@ -3776,6 +3779,7 @@ if (gRPC_INSTALL)
     ARCHIVE DESTINATION ${gRPC_INSTALL_LIBDIR}
   )
 endif()
+#]]
 
 
 if (gRPC_BUILD_CODEGEN)
