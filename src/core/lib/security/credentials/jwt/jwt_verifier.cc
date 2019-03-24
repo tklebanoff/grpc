@@ -603,6 +603,8 @@ static EVP_PKEY* find_verification_key(const grpc_json* json,
   return nullptr;
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-fpermissive"
 static int verify_jwt_signature(EVP_PKEY* key, const char* alg,
                                 const grpc_slice& signature,
                                 const grpc_slice& signed_data) {
@@ -635,6 +637,7 @@ end:
   EVP_MD_CTX_destroy(md_ctx);
   return result;
 }
+#pragma GCC diagnostic pop
 
 static void on_keys_retrieved(void* user_data, grpc_error* error) {
   verifier_cb_ctx* ctx = static_cast<verifier_cb_ctx*>(user_data);
