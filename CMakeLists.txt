@@ -130,7 +130,7 @@ if (_gRPC_PLATFORM_LINUX OR _gRPC_PLATFORM_MAC)
   # https://stackoverflow.com/questions/15058403/how-to-stop-cmake-from-linking-against-libstdc
   set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "")
   # Exceptions and RTTI must be off to avoid dependency on libstdc++
-  set(_gRPC_CORE_NOSTDCXX_FLAGS -fno-exceptions -fno-rtti)
+  set(_gRPC_CORE_NOSTDCXX_FLAGS  -fno-exceptions -fno-rtti)
 else()
   set(_gRPC_CORE_NOSTDCXX_FLAGS "")
 endif()
@@ -1295,6 +1295,7 @@ add_library(grpc
   src/core/ext/filters/workarounds/workaround_utils.cc
   src/core/plugin_registry/grpc_plugin_registry.cc
 )
+set_source_files_properties( src/core/lib/security/credentials/jwt/jwt_verifier.cc PROPERTIES COMPILE_FLAGS -fpermissive)
 
 if(WIN32 AND MSVC)
   set_target_properties(grpc PROPERTIES COMPILE_PDB_NAME "grpc"
