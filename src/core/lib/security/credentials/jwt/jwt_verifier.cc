@@ -604,7 +604,7 @@ static EVP_PKEY* find_verification_key(const grpc_json* json,
 }
 
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
+#pragma GCC diagnostic ignored "-fpermissive"
 static int verify_jwt_signature(EVP_PKEY* key, const char* alg,
                                 const grpc_slice& signature,
                                 const grpc_slice& signed_data) {
