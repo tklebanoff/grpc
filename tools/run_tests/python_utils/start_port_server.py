@@ -36,13 +36,14 @@ def start_port_server():
     # otherwise, leave it up
     try:
         version = int(
-            request.urlopen('http://localhost:%d/version_number' %
+                request.urlopen('http://localhost:%d/version_number' %
                             _PORT_SERVER_PORT).read())
         logging.info('detected port server running version %d', version)
         running = True
     except Exception as e:
         logging.exception('failed to detect port server')
         running = False
+    print('ok, so we are here')
     if running:
         current_version = int(
             subprocess.check_output([
